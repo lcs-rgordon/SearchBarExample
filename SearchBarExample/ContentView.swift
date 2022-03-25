@@ -8,14 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    // MARK: Stored properties
+    @State private var flavours: [String] = ["Strawberry",
+                                             "Chocolate",
+                                             "Vanilla"]
+    
+    // MARK: Computed properties
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        List(flavours, id: \.self) { currentFlavour in
+            Text(currentFlavour)
+        }
+        .navigationTitle("Ice Cream")
+        
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        NavigationView {
+            ContentView()
+        }
     }
 }
